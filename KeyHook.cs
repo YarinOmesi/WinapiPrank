@@ -32,9 +32,9 @@ internal class KeyHook : IDisposable
         return !_hook.IsNull;
     }
 
-    public void Run()
+    public void Run(CancellationToken token = default)
     {
-        while (GetMessage(out MSG _, HWND.Null, 0, 0)) { }
+        while (!token.IsCancellationRequested && GetMessage(out MSG _, HWND.Null, 0, 0)) { }
     }
 
     private unsafe LRESULT HookCallback(int nCode, WPARAM wParam, LPARAM lParam)
