@@ -20,3 +20,5 @@ GetWindowPlacement
 GetForegroundWindow
 
 GetCursorPos
+
+NTSTATUS
